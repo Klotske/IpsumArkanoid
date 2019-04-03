@@ -43,7 +43,7 @@ public class BlockScript : MonoBehaviour
         iTween.ShakePosition(gameObject, Vector3.one * Random.Range(-0.2f, 0.2f), 0.2f);
     }
 
-    public void ShakeAll()
+    public static void ShakeAll()
     {
         foreach (BlockScript block in FindObjectsOfType<BlockScript>())
         {

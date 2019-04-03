@@ -15,11 +15,13 @@ public class BallScript : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
 
-        ballInitialForce = new Vector2(100.0f, 300.0f);
+        ballInitialForce = new Vector2(100f, 300f);
 
         ballIsActive = false;
 
         ballPosition = transform.position;
+
+        //GetComponent<Collider2D>().enabled = false;
     }
 
     // Update is called once per frame
@@ -30,10 +32,10 @@ public class BallScript : MonoBehaviour
             if (!ballIsActive)
             {
                 rig.isKinematic = false;
-
+                ballPosition.y = -3.8f;
                 rig.AddForce(ballInitialForce);
-
                 ballIsActive = !ballIsActive;
+                GetComponent<TrailRenderer>().enabled = true;
             }
         }
 
@@ -47,12 +49,28 @@ public class BallScript : MonoBehaviour
 
         if (ballIsActive && transform.position.y < -6)
         {
+            GetComponent<TrailRenderer>().enabled = false;
             ballIsActive = !ballIsActive;
             ballPosition.x = playerObject.transform.position.x;
-            ballPosition.y = -3.93f;
+            ballPosition.y = -3.9f;
+            rig.velocity = new Vector2(0f, 0f);
             transform.position = ballPosition;
-
             rig.isKinematic = true;
+        }
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Paddle")
+        {
+            collision.gameObject.GetComponent<PlayerScript>().Glow();
+        }
+        else if (collision.gameObject.tag == "Block")
+        {
+            //Todo : Sound
+        }
+        else
+        {
+            BlockScript.ShakeAll();
         }
     }
 }

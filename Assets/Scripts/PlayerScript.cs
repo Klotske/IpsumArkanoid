@@ -41,4 +41,9 @@ public class PlayerScript : MonoBehaviour
             transform.position = playerPosition;
         }   
     }
+
+    public void Glow()
+    {
+        iTween.ColorFrom(gameObject, Color.white, 0.33f);
+    }
 }
