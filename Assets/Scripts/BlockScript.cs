@@ -29,7 +29,7 @@ public class BlockScript : MonoBehaviour
             if (numberOfHits == hitsToKill)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.SendMessage("addPoints", Points);
+                Level.BlockDied(Points);
                 Destroy(this.gameObject);
             }
             else
@@ -51,6 +51,14 @@ public class BlockScript : MonoBehaviour
         foreach (BlockScript block in FindObjectsOfType<BlockScript>())
         {
             block.Shake();
+        }
+    }
+
+    public void DieAll()
+    {
+        foreach (BlockScript block in FindObjectsOfType<BlockScript>())
+        {
+            Destroy(block.gameObject);
         }
     }
 }

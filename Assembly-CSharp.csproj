@@ -60,9 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Lights.cs" />
     <Compile Include="Assets\Scripts\BallScript.cs" />
     <Compile Include="Assets\Scripts\BlockScript.cs" />
     <Compile Include="Assets\Scripts\iTween.cs" />
+    <Compile Include="Assets\Scripts\Level.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/1/Documents/Game/Unity Arkanoid/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

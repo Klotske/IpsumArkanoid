@@ -9,6 +9,8 @@ public class BallScript : MonoBehaviour
     private bool ballIsActive;
     private Vector3 ballPosition;
     private Vector2 ballInitialForce;
+    public AudioClip hit;
+    public AudioClip pop;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,7 @@ public class BallScript : MonoBehaviour
 
         if (ballIsActive && transform.position.y < -6)
         {
+            Level.BallDied();
             GetComponent<TrailRenderer>().enabled = false;
             ballIsActive = !ballIsActive;
             ballPosition.x = playerObject.transform.position.x;
@@ -56,6 +59,7 @@ public class BallScript : MonoBehaviour
             rig.velocity = new Vector2(0f, 0f);
             transform.position = ballPosition;
             rig.isKinematic = true;
+
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)
@@ -66,11 +70,12 @@ public class BallScript : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Block")
         {
-            //Todo : Sound
+            GetComponent<AudioSource>().PlayOneShot(hit);
         }
         else
         {
             BlockScript.ShakeAll();
+            GetComponent<AudioSource>().PlayOneShot(pop);
         }
     }
 }

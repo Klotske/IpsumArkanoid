@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject[] lights;
     public float limit;
     public float playerVelocity;
-    public int Lives;
     public int Score;
     private Vector3 playerPosition;
 
@@ -14,8 +14,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         playerPosition = gameObject.transform.position;
-        Score = 0;
-
+        lights = GameObject.FindGameObjectsWithTag("Lights");
     }
 
     // Update is called once per frame
@@ -28,6 +27,11 @@ public class PlayerScript : MonoBehaviour
             Application.Quit();
         }
 
+        if ((Input.GetKeyDown(KeyCode.Semicolon)) &&(FindObjectsOfType<BlockScript>().Length > 0))
+        {
+            BlockScript block = FindObjectsOfType<BlockScript>()[0];
+            block.DieAll();
+        }
 
         if (playerPosition.x <= -limit)
         {
@@ -42,21 +46,65 @@ public class PlayerScript : MonoBehaviour
         else
         {
             transform.position = playerPosition;
-        }   
+        }
     }
 
-    public void Takelife()
-    {
-        Lives--;
-    }
+    //public void Takelife()
+    //{
+    //    Lives--;
+    //}
 
-    void addPoints(int points)
-    {
-        Score += points;
-    }
+    //void WinLose ()
+    //{
+    //    if (Lives == 0)
+    //    {
+    //        Application.LoadLevel("level1");
+    //    }
+
+    //    if ((GameObject.FindGameObjectsWithTag("Block")).Length == 0)
+    //    {
+    //        if (Application.loadedLevelName == "level1")
+    //        {
+    //            Application.LoadLevel("level2");
+    //        }
+    //        else if (Application.loadedLevelName == "level2")
+    //        {
+    //            Application.LoadLevel("level3");
+    //        }
+    //        else if (Application.loadedLevelName == "level3")
+    //        {
+    //            Application.LoadLevel("level4");
+    //        }
+    //        else if (Application.loadedLevelName == "level4")
+    //        {
+    //            Application.LoadLevel("level0");
+    //        }
+
+    //    }
+    //}
+
+    //void AddPoints(int points)
+    //{
+    //    Score += points;
+    //}
 
     public void Glow()
     {
         iTween.ColorFrom(gameObject, Color.white, 0.33f);
+    }
+
+    public void LightUp(int lightCount)
+    {
+        for (var i = 0; i < lights.Length; i++)
+        {
+            if (i < lightCount)
+            {
+                lights[i].GetComponent<SpriteRenderer>().enabled = true;
+            }
+            else
+            {
+                lights[i].GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
     }
 }
