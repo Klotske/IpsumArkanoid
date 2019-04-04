@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitsToKill: 1
-  points: 0
+  Points: 100
 --- !u!61 &129456674738164566
 BoxCollider2D:
   m_ObjectHideFlags: 0

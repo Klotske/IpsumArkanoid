@@ -3,7 +3,7 @@
 public class BlockScript : MonoBehaviour
 {
     public int hitsToKill;
-    public int points;
+    public int Points;
     private int numberOfHits;
     Vector3 startingPosition;
 
@@ -11,6 +11,7 @@ public class BlockScript : MonoBehaviour
     {
         numberOfHits = 0;
         startingPosition = transform.position;
+       
     }
 
     // Update is called once per frame
@@ -27,6 +28,8 @@ public class BlockScript : MonoBehaviour
 
             if (numberOfHits == hitsToKill)
             {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.SendMessage("addPoints", Points);
                 Destroy(this.gameObject);
             }
             else

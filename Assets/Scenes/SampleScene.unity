@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 829431433}
   m_Layer: 0
   m_Name: Paddle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1374,6 +1374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limit: 6.9
   playerVelocity: 0.3
+  Lives: 0
+  Score: 0
 --- !u!212 &829431431
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2900,6 +2902,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 129456674738164565, guid: 5b53c921f060b4a42a45b3b5e926d440,
+        type: 3}
+      propertyPath: Points
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b53c921f060b4a42a45b3b5e926d440, type: 3}
 --- !u!4 &715805016259616675 stripped
@@ -3059,6 +3066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hitsToKill
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354892734454656286, guid: 943ee91d2b5e4e84094fd063aaf7acd4,
+        type: 3}
+      propertyPath: Points
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 943ee91d2b5e4e84094fd063aaf7acd4, type: 3}

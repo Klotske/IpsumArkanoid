@@ -6,12 +6,15 @@ public class PlayerScript : MonoBehaviour
 {
     public float limit;
     public float playerVelocity;
+    public int Lives;
+    public int Score;
     private Vector3 playerPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         playerPosition = gameObject.transform.position;
+        Score = 0;
 
     }
 
@@ -40,6 +43,16 @@ public class PlayerScript : MonoBehaviour
         {
             transform.position = playerPosition;
         }   
+    }
+
+    public void Takelife()
+    {
+        Lives--;
+    }
+
+    void addPoints(int points)
+    {
+        Score += points;
     }
 
     public void Glow()

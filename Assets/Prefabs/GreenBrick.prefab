@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f8d596966e9fe4199d4bf56a35dc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsToKill: 1
-  points: 0
+  hitsToKill: 2
+  Points: 200
 --- !u!61 &4933475804707744062
 BoxCollider2D:
   m_ObjectHideFlags: 0
