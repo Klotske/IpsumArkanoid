@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class Level : MonoBehaviour
     {
         blockCount -= 1;
         Score += blockScore;
+        GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + Score.ToString();
         if (blockCount <= 0 && levelCount < 5)
         {
             //LevelManager.Instance.Select(levelName);

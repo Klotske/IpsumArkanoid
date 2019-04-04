@@ -2,8 +2,10 @@ Win64
 PlayerPath?
 C:/Users/1/Desktop/Exe/Unity Arkanoid.exe
 SceneListBegin?
-Assets/Scenes/level1.unity
+Assets/Scenes/level4.unity
+Assets/Scenes/level3.unity
 Assets/Scenes/level2.unity
+Assets/Scenes/level1.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -164,3 +166,4 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 75184cb25753efc5a7dc364b6de073b3 Assembly-CSharp.dll:.Level
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Lights
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LevelManager
+9f783d9a171c5d6942e08da86a335322 Assembly-CSharp.dll:.Loader

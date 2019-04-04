@@ -7,7 +7,6 @@ public class PlayerScript : MonoBehaviour
     public GameObject[] lights;
     public float limit;
     public float playerVelocity;
-    public int Score;
     private Vector3 playerPosition;
 
     // Start is called before the first frame update
