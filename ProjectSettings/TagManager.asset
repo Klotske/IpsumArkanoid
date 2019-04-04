@@ -8,6 +8,7 @@ TagManager:
   - Block
   - Lights
   - Score
+  - Bonus
   layers:
   - Default
   - TransparentFX

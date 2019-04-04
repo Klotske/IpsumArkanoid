@@ -32,6 +32,12 @@ public class PlayerScript : MonoBehaviour
             block.DieAll();
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            BonusScript bonus = FindObjectsOfType<BonusScript>()[0];
+            bonus.Roulette();
+        }
+
         if (playerPosition.x <= -limit)
         {
             transform.position = new Vector2(-limit + 0.01f, playerPosition.y);
