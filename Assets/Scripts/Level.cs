@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    static int blockCount;
+    static int blocks = 25;
+    static int blockCount = 25;
     public static int lifeCount = 3;
 
     public int lives = 3;
@@ -12,13 +13,6 @@ public class Level : MonoBehaviour
 
     void Start()
     {
-        blockCount = 0;
-        print(lifeCount);
-        foreach (Transform block in transform)
-        {
-            blockCount += 1;
-            iTween.MoveFrom(block.gameObject, iTween.Hash("y", 7, "time", Random.Range(0.5f, 1f), "easeType", "EaseOutElastic"));
-        }
     }
 
     private void Update()
@@ -28,16 +22,16 @@ public class Level : MonoBehaviour
 
     public static void BallDied()
     {
-        print(lifeCount);
         lifeCount = lifeCount - 1;
-        print(lifeCount);
         if (lifeCount <= 0)
         {
+            FindObjectOfType<PlayerScript>().LightUp(0);
             //To LevelSelect
+            Application.Quit();
+            //LevelManager.Instance.Select("level2");
         }
         else
         {
-            print(lifeCount);
             FindObjectOfType<PlayerScript>().LightUp(lifeCount);
         }
     }
@@ -49,6 +43,8 @@ public class Level : MonoBehaviour
         if (blockCount <= 0)
         {
             // To Next Level
+            print("TEstt");
+            LevelManager.Instance.Select("level2");
         }
     }
 }

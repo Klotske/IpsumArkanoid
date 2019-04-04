@@ -11,6 +11,7 @@ public class BallScript : MonoBehaviour
     private Vector2 ballInitialForce;
     public AudioClip hit;
     public AudioClip pop;
+    public AudioClip lose;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,12 @@ public class BallScript : MonoBehaviour
             }
         }
 
+        if ((rig.velocity.y <= 0.2f) && (rig.velocity.y >= -0.2f))
+        {
+            Vector2 force = new Vector2(rig.velocity.y, 1f);
+            rig.AddForce(force);
+        }
+
         if (!ballIsActive && playerObject != null)
         {
 
@@ -52,6 +59,7 @@ public class BallScript : MonoBehaviour
         if (ballIsActive && transform.position.y < -6)
         {
             Level.BallDied();
+            GetComponent<AudioSource>().PlayOneShot(lose);
             GetComponent<TrailRenderer>().enabled = false;
             ballIsActive = !ballIsActive;
             ballPosition.x = playerObject.transform.position.x;

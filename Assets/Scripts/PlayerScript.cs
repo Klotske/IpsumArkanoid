@@ -49,45 +49,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    //public void Takelife()
-    //{
-    //    Lives--;
-    //}
-
-    //void WinLose ()
-    //{
-    //    if (Lives == 0)
-    //    {
-    //        Application.LoadLevel("level1");
-    //    }
-
-    //    if ((GameObject.FindGameObjectsWithTag("Block")).Length == 0)
-    //    {
-    //        if (Application.loadedLevelName == "level1")
-    //        {
-    //            Application.LoadLevel("level2");
-    //        }
-    //        else if (Application.loadedLevelName == "level2")
-    //        {
-    //            Application.LoadLevel("level3");
-    //        }
-    //        else if (Application.loadedLevelName == "level3")
-    //        {
-    //            Application.LoadLevel("level4");
-    //        }
-    //        else if (Application.loadedLevelName == "level4")
-    //        {
-    //            Application.LoadLevel("level0");
-    //        }
-
-    //    }
-    //}
-
-    //void AddPoints(int points)
-    //{
-    //    Score += points;
-    //}
-
     public void Glow()
     {
         iTween.ColorFrom(gameObject, Color.white, 0.33f);

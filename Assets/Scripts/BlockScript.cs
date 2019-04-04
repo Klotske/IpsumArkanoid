@@ -58,6 +58,7 @@ public class BlockScript : MonoBehaviour
     {
         foreach (BlockScript block in FindObjectsOfType<BlockScript>())
         {
+            Level.BlockDied(block.Points);
             Destroy(block.gameObject);
         }
     }
