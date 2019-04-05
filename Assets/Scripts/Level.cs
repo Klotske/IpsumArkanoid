@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
     static int blocks = 25;
     static int blockCount = 25;
-    static int levelCount = 1;
-    static int levels = 5;
     public static int lifeCount = 3;
 
     public int lives = 3;
@@ -30,8 +29,8 @@ public class Level : MonoBehaviour
         {
             FindObjectOfType<PlayerScript>().LightUp(0);
             //To LevelSelect
-            Application.Quit();
-            //LevelManager.Instance.Select("level2");
+            lifeCount = 3;
+            SceneManager.LoadScene("Menu");
         }
         else
         {
@@ -41,12 +40,13 @@ public class Level : MonoBehaviour
 
     public static void BlockDied(int blockScore)
     {
-        blockCount -= 1;
+        int len = GameObject.FindGameObjectsWithTag("Block").Length;
         Score += blockScore;
         GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + Score.ToString();
-        if (blockCount <= 0 && levelCount < 5)
+        if (len <= 0)
         {
-            //LevelManager.Instance.Select(levelName);
+            lifeCount = 3;
+            SceneManager.LoadScene("Menu");
         }
     }
 }

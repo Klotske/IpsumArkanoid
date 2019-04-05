@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerScript : MonoBehaviour
     {
         playerPosition = gameObject.transform.position;
         lights = GameObject.FindGameObjectsWithTag("Lights");
+        BonusScript block = FindObjectsOfType<BonusScript>()[0];
+        block.ShutAll();
     }
 
     // Update is called once per frame
@@ -34,8 +37,20 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            BonusScript bonus = FindObjectsOfType<BonusScript>()[0];
-            bonus.Roulette();
+            if (Level.Score >= 4500)
+            {
+                int price = Random.Range(2200, 4500);
+                Level.Score -= price;
+                GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + Level.Score.ToString();
+                BonusScript bonus = FindObjectsOfType<BonusScript>()[0];
+                bonus.Roulette();
+            }
+        }   
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Level.Score = 4500;
+            GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + Level.Score.ToString();
         }
 
         if (playerPosition.x <= -limit)

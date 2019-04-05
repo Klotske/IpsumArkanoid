@@ -44,7 +44,13 @@ public class BallScript : MonoBehaviour
 
         if ((rig.velocity.y <= 0.2f) && (rig.velocity.y >= -0.2f))
         {
-            Vector2 force = new Vector2(rig.velocity.y, 1f);
+            Vector2 force = new Vector2(rig.velocity.x, 1f);
+            rig.AddForce(force);
+        }
+
+        if ((rig.velocity.x <= 0.2f) && (rig.velocity.x >= -0.2f))
+        {
+            Vector2 force = new Vector2(-1f, rig.velocity.y);
             rig.AddForce(force);
         }
 
