@@ -11,10 +11,10 @@ public class Level : MonoBehaviour
     public static int lifeCount = 3;
 
     public int lives = 3;
-    public static int Score = 0;
 
     void Start()
     {
+        GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + LevelManager.Score.ToString();
     }
 
     private void Update()
@@ -30,6 +30,7 @@ public class Level : MonoBehaviour
             FindObjectOfType<PlayerScript>().LightUp(0);
             //To LevelSelect
             lifeCount = 3;
+            LevelManager.Score = 0;
             SceneManager.LoadScene("Menu");
         }
         else
@@ -41,8 +42,8 @@ public class Level : MonoBehaviour
     public static void BlockDied(int blockScore)
     {
         int len = GameObject.FindGameObjectsWithTag("Block").Length;
-        Score += blockScore;
-        GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + Score.ToString();
+        LevelManager.Score += blockScore;
+        GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + LevelManager.Score.ToString();
         if (len <= 0)
         {
             lifeCount = 3;

@@ -26,31 +26,31 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            LevelManager.LoadLevelSelect();
         }
 
-        if ((Input.GetKeyDown(KeyCode.Semicolon)) &&(FindObjectsOfType<BlockScript>().Length > 0))
+        if ((Input.GetKeyDown(KeyCode.O)) &&(FindObjectsOfType<BlockScript>().Length > 0))
         {
             BlockScript block = FindObjectsOfType<BlockScript>()[0];
             block.DieAll();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Level.Score >= 4500)
+            if (LevelManager.Score >= 4500)
             {
                 int price = Random.Range(2200, 4500);
-                Level.Score -= price;
-                GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + Level.Score.ToString();
+                LevelManager.Score -= price;
+                GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + LevelManager.Score.ToString();
                 BonusScript bonus = FindObjectsOfType<BonusScript>()[0];
                 bonus.Roulette();
             }
         }   
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            Level.Score = 4500;
-            GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + Level.Score.ToString();
+            LevelManager.Score = 4500;
+            GameObject.FindGameObjectWithTag("Score").GetComponent<Text>().text = "SCORE: " + LevelManager.Score.ToString();
         }
 
         if (playerPosition.x <= -limit)

@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager Instance { get; private set; }
 
+    public static int Score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
-    public void LoadLevelSelect()
+    public static void LoadLevelSelect()
     {
         SceneManager.LoadScene("Menu");
     }
